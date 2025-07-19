@@ -93,3 +93,12 @@ coverage/
 *.coveragexml
 TestResults/
 
+# Visual Studio dosyaları
+.vs/
+*.suo
+
+# Build klasörleri
+**/bin/
+**/obj/
+
+
