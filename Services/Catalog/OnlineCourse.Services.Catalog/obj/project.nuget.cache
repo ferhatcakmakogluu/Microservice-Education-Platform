@@ -1,15 +1,50 @@
 {
   "version": 2,
-  "dgSpecHash": "Y3yQvyQ3hSg=",
+  "dgSpecHash": "gDYCyAsvbeA=",
   "success": true,
   "projectFilePath": "C:\\Users\\Ferhat Çakmakoğlu\\source\\repos\\Microservices\\Services\\Catalog\\OnlineCourse.Services.Catalog\\OnlineCourse.Services.Catalog.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\dnsclient\\1.4.0\\dnsclient.1.4.0.nupkg.sha512",
     "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\mongodb.bson\\2.12.1\\mongodb.bson.2.12.1.nupkg.sha512",
+    "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\mongodb.driver\\2.12.1\\mongodb.driver.2.12.1.nupkg.sha512",
+    "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\mongodb.driver.core\\2.12.1\\mongodb.driver.core.2.12.1.nupkg.sha512",
+    "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\mongodb.libmongocrypt\\1.2.1\\mongodb.libmongocrypt.1.2.1.nupkg.sha512",
+    "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\sharpcompress\\0.23.0\\sharpcompress.0.23.0.nupkg.sha512",
     "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
     "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
-    "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+    "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
+    "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "C:\\Users\\Ferhat Çakmakoğlu\\.nuget\\packages\\system.text.encoding.codepages\\4.5.1\\system.text.encoding.codepages.4.5.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'MongoDB.Driver' 2.12.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-7j9m-j397-g4wx",
+      "projectPath": "C:\\Users\\Ferhat Çakmakoğlu\\source\\repos\\Microservices\\Services\\Catalog\\OnlineCourse.Services.Catalog\\OnlineCourse.Services.Catalog.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Ferhat Çakmakoğlu\\source\\repos\\Microservices\\Services\\Catalog\\OnlineCourse.Services.Catalog\\OnlineCourse.Services.Catalog.csproj",
+      "libraryId": "MongoDB.Driver",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "Package 'MongoDB.Driver' 2.12.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-p9rv-qgqw-jx2w",
+      "projectPath": "C:\\Users\\Ferhat Çakmakoğlu\\source\\repos\\Microservices\\Services\\Catalog\\OnlineCourse.Services.Catalog\\OnlineCourse.Services.Catalog.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Ferhat Çakmakoğlu\\source\\repos\\Microservices\\Services\\Catalog\\OnlineCourse.Services.Catalog\\OnlineCourse.Services.Catalog.csproj",
+      "libraryId": "MongoDB.Driver",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }
