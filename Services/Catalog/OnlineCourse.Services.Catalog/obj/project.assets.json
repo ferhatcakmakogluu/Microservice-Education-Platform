@@ -369,6 +369,16 @@
             "rid": "win"
           }
         }
+      },
+      "OnlineCourse.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/OnlineCourse.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OnlineCourse.Shared.dll": {}
+        }
       }
     }
   },
@@ -945,12 +955,18 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "OnlineCourse.Shared/1.0.0": {
+      "type": "project",
+      "path": "../../../Shared/OnlineCourse.Shared/OnlineCourse.Shared.csproj",
+      "msbuildProject": "../../../Shared/OnlineCourse.Shared/OnlineCourse.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.1",
       "MongoDB.Driver >= 2.12.1",
+      "OnlineCourse.Shared >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -985,7 +1001,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Ferhat Çakmakoğlu\\source\\repos\\Microservices\\Shared\\OnlineCourse.Shared\\OnlineCourse.Shared.csproj": {
+              "projectPath": "C:\\Users\\Ferhat Çakmakoğlu\\source\\repos\\Microservices\\Shared\\OnlineCourse.Shared\\OnlineCourse.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

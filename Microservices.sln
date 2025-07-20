@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36301.6 d17.14
+VisualStudioVersion = 17.14.36301.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Ports.txt = Ports.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{646A8541-47D9-4FDF-BCDA-4402E860EAA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCourse.Shared", "Shared\OnlineCourse.Shared\OnlineCourse.Shared.csproj", "{C30F4747-CAF7-4D7E-892C-40E2F125F51C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +28,10 @@ Global
 		{CA7D2C4F-31CC-4301-A027-020C9AAE9432}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA7D2C4F-31CC-4301-A027-020C9AAE9432}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA7D2C4F-31CC-4301-A027-020C9AAE9432}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30F4747-CAF7-4D7E-892C-40E2F125F51C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30F4747-CAF7-4D7E-892C-40E2F125F51C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30F4747-CAF7-4D7E-892C-40E2F125F51C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30F4747-CAF7-4D7E-892C-40E2F125F51C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -31,6 +39,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{DB1E493A-5429-4640-844A-ECAC1BC3F8A6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{CA7D2C4F-31CC-4301-A027-020C9AAE9432} = {DB1E493A-5429-4640-844A-ECAC1BC3F8A6}
+		{C30F4747-CAF7-4D7E-892C-40E2F125F51C} = {646A8541-47D9-4FDF-BCDA-4402E860EAA2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D4B2C9BD-F2BA-4AFB-AEC9-BF06E76A141E}

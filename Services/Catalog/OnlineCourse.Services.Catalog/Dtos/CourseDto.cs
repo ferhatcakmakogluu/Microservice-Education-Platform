@@ -4,7 +4,7 @@ using System;
 
 namespace OnlineCourse.Services.Catalog.Dtos
 {
-    public class CourseDto
+    internal class CourseDto
     {
         public string Id { get; set; }
         public string UserId { get; set; }
