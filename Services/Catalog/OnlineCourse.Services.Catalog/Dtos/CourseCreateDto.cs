@@ -2,7 +2,7 @@
 
 namespace OnlineCourse.Services.Catalog.Dtos
 {
-    internal class CourseCreateDto
+    public class CourseCreateDto
     {
         public string UserId { get; set; }
         public string CategoryId { get; set; }
