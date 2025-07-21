@@ -31,7 +31,7 @@ namespace OnlineCourse.Services.PhotoStock
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.Authority = Configuration["IdentityServerURL"];
-                options.Audience = "resource_catalog";
+                options.Audience = "photo_stock_catalog";
                 options.RequireHttpsMetadata = false;
             });
 
