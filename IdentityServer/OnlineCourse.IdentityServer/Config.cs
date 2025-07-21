@@ -47,6 +47,7 @@ public static class Config
             {
                 ClientName = "Asp.Net Core MVC",
                 ClientId = "WebMvcClientForUser",
+                AllowOfflineAccess = true,
                 ClientSecrets = {new Secret("secret".Sha256())},
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 AllowedScopes = 
@@ -56,6 +57,7 @@ public static class Config
                     IdentityServerConstants.StandardScopes.Profile,
                     //refresh token
                     IdentityServerConstants.StandardScopes.OfflineAccess,
+                    IdentityServerConstants.LocalApi.ScopeName,
                     "roles"
                 },
                 AccessTokenLifetime = 1*60*60,
