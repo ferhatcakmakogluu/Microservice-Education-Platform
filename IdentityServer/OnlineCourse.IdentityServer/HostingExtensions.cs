@@ -1,8 +1,9 @@
 using Duende.IdentityServer;
-using OnlineCourse.IdentityServer.Data;
-using OnlineCourse.IdentityServer.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using OnlineCourse.IdentityServer.Data;
+using OnlineCourse.IdentityServer.Models;
+using OnlineCourse.IdentityServer.Services;
 using Serilog;
 
 namespace OnlineCourse.IdentityServer;
@@ -42,8 +43,10 @@ internal static class HostingExtensions
             .AddInMemoryApiResources(Config.ApiResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
             .AddInMemoryClients(Config.Clients)
-            .AddAspNetIdentity<ApplicationUser>();
+            .AddAspNetIdentity<ApplicationUser>()
+            .AddResourceOwnerValidator<IdentityResourceOwnerPasswordValidator>();
         
+
         builder.Services.AddAuthentication()
             .AddGoogle(options =>
             {

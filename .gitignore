@@ -101,4 +101,4 @@ TestResults/
 **/bin/
 **/obj/
 
-
+*.csproj
