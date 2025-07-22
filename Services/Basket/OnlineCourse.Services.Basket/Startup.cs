@@ -9,6 +9,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using OnlineCourse.Services.Basket.Services;
 using OnlineCourse.Services.Basket.Settings;
+using OnlineCourse.Shared.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,10 +29,15 @@ namespace OnlineCourse.Services.Basket
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
+
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+
+
+            //redis
 
             services.Configure<RedisSettings>(Configuration.GetSection("RedisSettings"));
 
-            //redis
 
             services.AddSingleton<RedisService>(sp =>
             {
