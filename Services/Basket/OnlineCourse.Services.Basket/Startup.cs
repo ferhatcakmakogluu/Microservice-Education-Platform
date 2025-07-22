@@ -5,7 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using OnlineCourse.Services.Basket.Services;
 using OnlineCourse.Services.Basket.Settings;
 using System;
 using System.Collections.Generic;
@@ -28,6 +30,19 @@ namespace OnlineCourse.Services.Basket
         {
 
             services.Configure<RedisSettings>(Configuration.GetSection("RedisSettings"));
+
+            //redis
+
+            services.AddSingleton<RedisService>(sp =>
+            {
+                var redisSettings = sp.GetRequiredService<IOptions<RedisSettings>>().Value;
+
+                var redis = new RedisService(redisSettings.Host, redisSettings.Port);
+
+                redis.Connect();
+
+                return redis;
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
