@@ -30,6 +30,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{7B5903
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCourse.Services.Basket", "Services\Basket\OnlineCourse.Services.Basket\OnlineCourse.Services.Basket.csproj", "{175AF167-F2C1-4E9E-B374-52C16A72E586}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{0B86559B-9B16-4F0C-BB3E-A05299106BC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCourse.Services.Discount", "Services\Discount\OnlineCourse.Services.Discount\OnlineCourse.Services.Discount.csproj", "{2DEAE5AA-B8A5-4770-A7BE-C115A40F7A6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +60,10 @@ Global
 		{175AF167-F2C1-4E9E-B374-52C16A72E586}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{175AF167-F2C1-4E9E-B374-52C16A72E586}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{175AF167-F2C1-4E9E-B374-52C16A72E586}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DEAE5AA-B8A5-4770-A7BE-C115A40F7A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DEAE5AA-B8A5-4770-A7BE-C115A40F7A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DEAE5AA-B8A5-4770-A7BE-C115A40F7A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DEAE5AA-B8A5-4770-A7BE-C115A40F7A6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +77,8 @@ Global
 		{F58604D4-DF02-4B46-8068-530CB3F72B8F} = {BC593B99-57CA-45D7-8D75-798FC05A0E7C}
 		{7B59038E-61BE-451E-BD67-8AA4A5A10156} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{175AF167-F2C1-4E9E-B374-52C16A72E586} = {7B59038E-61BE-451E-BD67-8AA4A5A10156}
+		{0B86559B-9B16-4F0C-BB3E-A05299106BC7} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{2DEAE5AA-B8A5-4770-A7BE-C115A40F7A6C} = {0B86559B-9B16-4F0C-BB3E-A05299106BC7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D4B2C9BD-F2BA-4AFB-AEC9-BF06E76A141E}
