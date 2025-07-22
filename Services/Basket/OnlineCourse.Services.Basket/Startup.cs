@@ -15,6 +15,7 @@ using OnlineCourse.Services.Basket.Settings;
 using OnlineCourse.Shared.Services;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,11 +34,12 @@ namespace OnlineCourse.Services.Basket
         public void ConfigureServices(IServiceCollection services)
         {
             var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.Authority = Configuration["IdentityServerURL"];
-                options.Audience = "resource_catalog";
+                options.Audience = "resource_basket";
                 options.RequireHttpsMetadata = false;
             });
 
