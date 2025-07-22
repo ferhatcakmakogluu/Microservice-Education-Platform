@@ -26,6 +26,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhotoStock", "PhotoStock", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCourse.Services.PhotoStock", "Services\PhotoStock\OnlineCourse.Services.PhotoStock\OnlineCourse.Services.PhotoStock.csproj", "{F58604D4-DF02-4B46-8068-530CB3F72B8F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{7B59038E-61BE-451E-BD67-8AA4A5A10156}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCourse.Services.Basket", "Services\Basket\OnlineCourse.Services.Basket\OnlineCourse.Services.Basket.csproj", "{175AF167-F2C1-4E9E-B374-52C16A72E586}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +52,10 @@ Global
 		{F58604D4-DF02-4B46-8068-530CB3F72B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F58604D4-DF02-4B46-8068-530CB3F72B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F58604D4-DF02-4B46-8068-530CB3F72B8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{175AF167-F2C1-4E9E-B374-52C16A72E586}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{175AF167-F2C1-4E9E-B374-52C16A72E586}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{175AF167-F2C1-4E9E-B374-52C16A72E586}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{175AF167-F2C1-4E9E-B374-52C16A72E586}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,8 @@ Global
 		{0287218A-28CF-EFD2-A888-F6001A140C80} = {C5E1D842-6646-43C6-B71C-5AE9846A3A36}
 		{BC593B99-57CA-45D7-8D75-798FC05A0E7C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{F58604D4-DF02-4B46-8068-530CB3F72B8F} = {BC593B99-57CA-45D7-8D75-798FC05A0E7C}
+		{7B59038E-61BE-451E-BD67-8AA4A5A10156} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{175AF167-F2C1-4E9E-B374-52C16A72E586} = {7B59038E-61BE-451E-BD67-8AA4A5A10156}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D4B2C9BD-F2BA-4AFB-AEC9-BF06E76A141E}
