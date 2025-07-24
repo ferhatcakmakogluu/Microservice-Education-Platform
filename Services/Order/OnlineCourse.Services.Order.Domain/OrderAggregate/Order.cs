@@ -10,7 +10,7 @@ namespace OnlineCourse.Services.Order.Domain.OrderAggregate
     public class Order : Entity, IAggregateRoot
     {
         public DateTime CreatedDate { get; private set; }
-        public Address Adress { get; private set; }
+        public Address Address { get; private set; }
         public string BuyerId { get; private set; }
 
         private readonly List<OrderItem> _orderItems;
@@ -23,7 +23,7 @@ namespace OnlineCourse.Services.Order.Domain.OrderAggregate
             _orderItems = new List<OrderItem>();
             CreatedDate = DateTime.Now;
             BuyerId = buyerId;
-            Adress = adress;
+            Address = adress;
         }
 
         public void AddOrderItem(string productId, string productName, decimal price, string pictureUrl)
