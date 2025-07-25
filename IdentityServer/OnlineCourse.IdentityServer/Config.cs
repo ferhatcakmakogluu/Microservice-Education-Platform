@@ -12,6 +12,7 @@ public static class Config
         new ApiResource("resource_basket"){Scopes = {"basket_fullpermission"}},
         new ApiResource("resource_discount"){Scopes = {"discount_fullpermission"}},
         new ApiResource("resource_order"){Scopes = {"order_fullpermission"}},
+        new ApiResource("resource_payment"){Scopes = {"payment_fullpermission"}},
         new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
     };
 
@@ -35,6 +36,7 @@ public static class Config
             new ApiScope("basket_fullpermission","Basket API icin full erisim"),
             new ApiScope("discount_fullpermission","Discount API icin full erisim"),
             new ApiScope("order_fullpermission","Order API icin full erisim"),
+            new ApiScope("payment_fullpermission","Fake Payment API icin full erisim"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -61,6 +63,7 @@ public static class Config
                     "basket_fullpermission",
                     "discount_fullpermission",
                     "order_fullpermission",
+                    "payment_fullpermission",
                     IdentityServerConstants.StandardScopes.Email, 
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
