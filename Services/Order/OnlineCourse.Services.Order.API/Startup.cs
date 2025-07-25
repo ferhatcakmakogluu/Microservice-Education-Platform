@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using OnlineCourse.Services.Order.Infrastructure;
+using OnlineCourse.Shared.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +37,9 @@ namespace OnlineCourse.Services.Order.API
                 });
             });
 
+            services.AddHttpContextAccessor();
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+            services.AddMediatR(typeof(Application.Handlers.CreateOrderCommandHandler).Assembly);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
