@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OnlineCourse.Shared.Services;
 using OnlineCourse.Web.Handler;
 using OnlineCourse.Web.Models;
 using OnlineCourse.Web.Services;
@@ -48,7 +49,7 @@ namespace OnlineCourse.Web
 
             services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
             services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
-
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
