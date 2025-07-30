@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OnlineCourse.Web.Handler;
 using OnlineCourse.Web.Models;
 using OnlineCourse.Web.Services;
 using OnlineCourse.Web.Services.Interfaces;
@@ -33,7 +34,9 @@ namespace OnlineCourse.Web
             services.AddHttpClient<IUserService, UserService>(opt=>
             {
                 opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
-            });
+            })
+            .AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
             services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
             services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
 
