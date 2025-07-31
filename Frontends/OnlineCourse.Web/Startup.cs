@@ -28,11 +28,17 @@ namespace OnlineCourse.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
+            services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
+            services.AddHttpContextAccessor();
+            services.AddAccessTokenManagement();
+
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+            services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+            services.AddScoped<ClientCredentialTokenHandler>();
+
             var serviceApiSettings = Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 
-            services.AddHttpContextAccessor();
-
-            services.AddScoped<ResourceOwnerPasswordTokenHandler>();
 
             services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
             services.AddHttpClient<IIdentityService, IdentityService>();
@@ -40,7 +46,9 @@ namespace OnlineCourse.Web
             services.AddHttpClient<ICatalogService, CatalogService>(opt =>
             {
                 opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
-            });
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+            var demo = $"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}";
 
             services.AddHttpClient<IUserService, UserService>(opt=>
             {
@@ -48,9 +56,7 @@ namespace OnlineCourse.Web
             })
             .AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
-            services.Configure<ClientSettings>(Configuration.GetSection("ClientSettings"));
-            services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
-            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+            
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
