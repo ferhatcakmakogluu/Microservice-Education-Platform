@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OnlineCourse.Shared.Services;
 using OnlineCourse.Web.Handler;
+using OnlineCourse.Web.Helpers;
 using OnlineCourse.Web.Models;
 using OnlineCourse.Web.Services;
 using OnlineCourse.Web.Services.Interfaces;
@@ -32,6 +33,8 @@ namespace OnlineCourse.Web
             services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
             services.AddHttpContextAccessor();
             services.AddAccessTokenManagement();
+
+            services.AddSingleton<PhotoHelper>();
 
             services.AddScoped<ISharedIdentityService, SharedIdentityService>();
             services.AddScoped<ResourceOwnerPasswordTokenHandler>();
