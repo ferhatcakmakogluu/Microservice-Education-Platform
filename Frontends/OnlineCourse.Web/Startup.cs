@@ -48,6 +48,11 @@ namespace OnlineCourse.Web
                 opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}");
             }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
+            services.AddHttpClient<IPhotoStockService, PhotoStockService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.PhotoStock.Path}");
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             var demo = $"{serviceApiSettings.GatewayBaseUri}/{serviceApiSettings.Catalog.Path}";
 
             services.AddHttpClient<IUserService, UserService>(opt=>
