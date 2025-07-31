@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineCourse.Shared.Services;
+using OnlineCourse.Web.Models.Catalog;
 using OnlineCourse.Web.Services.Interfaces;
 using System.Threading.Tasks;
 
@@ -30,6 +31,22 @@ namespace OnlineCourse.Web.Controllers
             ViewBag.categoryList = new SelectList(categories, "Id", "Name");
 
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CourseCreateInput courseCreateInput)
+        {
+            var categories = await _catalogService.GetAllCategoryAsync();
+            ViewBag.categoryList = new SelectList(categories, "Id", "Name");
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            courseCreateInput.UserId = _identityService.GetUserId;
+            await _catalogService.CreateCourseAsync(courseCreateInput);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
