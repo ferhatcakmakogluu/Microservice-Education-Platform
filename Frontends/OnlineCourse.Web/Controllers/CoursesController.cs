@@ -48,5 +48,48 @@ namespace OnlineCourse.Web.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> Update(string id)
+        {
+            var course = await _catalogService.GetByCourseIdAsync(id);
+
+            if (course == null)
+            {
+                RedirectToAction(nameof(Index));
+            }
+
+            var categories = await _catalogService.GetAllCategoryAsync();
+            ViewBag.categoryList = new SelectList(categories, "Id", "Name", course.Id);
+
+            CourseUpdateInput courseUpdateInput = new()
+            {
+                Id = course.Id,
+                Name = course.Name,
+                Picture = course.Picture,
+                Description = course.Description,
+                Feature = course.Feature,
+                Price = course.Price,
+                CategoryId = course.CategoryId,
+                UserId = course.UserId
+            };
+
+            return View(courseUpdateInput);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(CourseUpdateInput courseUpdateInput)
+        {
+            var categories = await _catalogService.GetAllCategoryAsync();
+            ViewBag.categoryList = new SelectList(categories, "Id", "Name", courseUpdateInput.Id);
+            
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            await _catalogService.UpdateCourseAsync(courseUpdateInput);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
