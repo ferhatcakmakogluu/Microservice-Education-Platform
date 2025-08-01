@@ -46,7 +46,7 @@ namespace OnlineCourse.Web.Services
 
             var basket = await Get();
 
-            if(basket == null || basket.DiscountCode == null)
+            if(basket == null)
             {
                 return false;
             }
@@ -57,8 +57,8 @@ namespace OnlineCourse.Web.Services
                 return false;
             }
 
-            basket.DiscountRate = hasDiscount.Rate;
-            basket.DiscountCode = hasDiscount.Code;
+            basket.ApplyDiscount(hasDiscount.Code, hasDiscount.Rate);
+
             await SaveOrUpdate(basket);
             return true;
         }
@@ -72,7 +72,8 @@ namespace OnlineCourse.Web.Services
                 return false;
             }
 
-            basket.DiscountCode = null;
+            basket.CancelDiscount();
+
             await SaveOrUpdate(basket);
             return true;
         }

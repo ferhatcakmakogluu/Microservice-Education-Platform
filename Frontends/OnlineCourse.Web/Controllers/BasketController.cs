@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using OnlineCourse.Web.Models.Baskets;
 using OnlineCourse.Web.Models.Discounts;
 using OnlineCourse.Web.Services.Interfaces;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace OnlineCourse.Web.Controllers
@@ -46,6 +47,12 @@ namespace OnlineCourse.Web.Controllers
 
         public async Task<IActionResult> ApplyDiscount(DiscountApplyInput discountApplyInput)
         {
+            if (!ModelState.IsValid)
+            {
+                TempData["discountError"] = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).First();
+                return RedirectToAction(nameof(Index));
+            }
+
             var discountStatus = await _basketService.ApplyDiscount(discountApplyInput.Code);
 
             TempData["discountStatus"] = discountStatus;

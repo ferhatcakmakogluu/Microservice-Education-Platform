@@ -23,7 +23,7 @@
                         {
                             <tr>
                                 <td>@item.CourseName</td>
-                                <td>@item.GetCurrentPrice TL</td>
+                                <td>@item.GetCurrentPrice TL @(Model.HasDiscount ? $"(%{Model.DiscountRate.Value} Uygulandı)" : "")</td>
                                 <td>
                                     <a class="btn btn-danger" asp-controller="Basket" asp-action="RemoveBasketItem" asp-route-courseId="@item.CourseId">
                                         Sil</a>
@@ -50,21 +50,24 @@
                         {
                             <div class="alert alert-success">
                                 "@Model.DiscountCode" İndirim Kodu Uygulandı
-                            </div>
-                        }
-
-                        @if (TempData["discountStatus"] != null && (bool)TempData["discountStatus"]==false)
-                        {
-                            <div class="text-danger">
-                                İndirim Kodu Geçersiz!
+                                <a asp-controller="Basket" asp-action="CancelApplyDiscount" class="btn btn-danger">Kodu İptal Et</a>
                             </div>
                         }
 
                         <div class="input-group mb-3">
                             <input type="text" name="DiscountApplyInput.Code" class="form-control" />
-                            <div asp-validation-summary="All" class="text-danger"></div>
                             <button class="btn btn-outline-secondary" type="submit">Uygula</button>
                         </div>
+                        @if (TempData["discountError"] != null)
+                        {
+                            <div class="text-danger">@TempData["discountError"]</div>
+                        }
+                        @if (TempData["discountStatus"] != null && (bool)TempData["discountStatus"] == false)
+                        {
+                            <div class="text-danger">
+                                İndirim Kodu Geçersiz!
+                            </div>
+                        }
                     </form>
                 }
                 else
