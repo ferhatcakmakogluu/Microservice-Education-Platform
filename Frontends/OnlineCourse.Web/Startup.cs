@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,7 @@ using OnlineCourse.Web.Helpers;
 using OnlineCourse.Web.Models;
 using OnlineCourse.Web.Services;
 using OnlineCourse.Web.Services.Interfaces;
+using OnlineCourse.Web.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +54,7 @@ namespace OnlineCourse.Web
                     options.Cookie.Name = "webcookie";
                 });
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddFluentValidation(fv=>fv.RegisterValidatorsFromAssemblyContaining<CourseCreateInputValidator>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
