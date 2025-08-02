@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCourse.Web.Models.Orders;
 using OnlineCourse.Web.Services.Interfaces;
+using System;
 using System.Threading.Tasks;
 
 namespace OnlineCourse.Web.Controllers
@@ -26,17 +27,25 @@ namespace OnlineCourse.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Checkout(CheckoutInfoInput checkoutInfoInput)
         {
-            var orderStatus = await _orderService.CreateOrder(checkoutInfoInput);
+            // first way - sync communicate
+            //var orderStatus = await _orderService.CreateOrder(checkoutInfoInput);
 
-            if (!orderStatus.IsSuccessful)
+            // second way - async (rabbitmq)
+            var orderSuspend = await _orderService.SuspendOrder(checkoutInfoInput);
+
+            if (!orderSuspend.IsSuccessful)
             {
                 var basket = await _basketService.Get();
                 ViewBag.basket = basket;
-                ViewBag.error = orderStatus.Error;
+                ViewBag.error = orderSuspend.Error;
                 return View();
             }
 
-            return RedirectToAction(nameof(SuccessfulCheckout), new { orderId = orderStatus.OrderId});
+            // first way - sync communicate
+            //return RedirectToAction(nameof(SuccessfulCheckout), new { orderId = orderSuspend.OrderId});
+
+            // second way - async
+            return RedirectToAction(nameof(SuccessfulCheckout), new { orderId = new Random().Next(1,1000) });
         }
 
         public IActionResult SuccessfulCheckout(int orderId)
