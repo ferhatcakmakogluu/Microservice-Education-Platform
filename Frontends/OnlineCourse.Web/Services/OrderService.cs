@@ -90,10 +90,54 @@ namespace OnlineCourse.Web.Services
             return response.Data;
         }
 
-        public Task SuspendOrder(CheckoutInfoInput checkoutInfoInput)
+        public async Task<OrderSuspendViewModel> SuspendOrder(CheckoutInfoInput checkoutInfoInput)
         {
-            //async method, it will complete after rabbitMQ
-            throw new System.NotImplementedException();
+            var basket = await _basketService.Get();
+
+            var orderCreateInput = new OrderCreateInput()
+            {
+                BuyerId = _sharedIdentityService.GetUserId,
+                AddressDto = new AddressCreateInput
+                {
+                    Province = checkoutInfoInput.Province,
+                    District = checkoutInfoInput.District,
+                    Line = checkoutInfoInput.Line,
+                    Street = checkoutInfoInput.Street,
+                    ZipCode = checkoutInfoInput.ZipCode
+                }
+            };
+
+            basket.BasketItems.ForEach(x =>
+            {
+                var orderItem = new OrderItemCreateInput
+                {
+                    ProductId = x.CourseId,
+                    Price = x.GetCurrentPrice,
+                    PictureUrl = "",
+                    ProductName = x.CourseName
+                };
+                orderCreateInput.OrderItems.Add(orderItem);
+            });
+
+            var paymentInfoInput = new PaymentInfoInput()
+            {
+                CardName = checkoutInfoInput.CardName,
+                CardNumber = checkoutInfoInput.CardNumber,
+                Expiration = checkoutInfoInput.Expiration,
+                CVV = checkoutInfoInput.CVV,
+                TotalPrice = basket.TotalPrice,
+                Order = orderCreateInput
+            };
+
+
+            var responsePayment = await _paymentService.ReceivePayment(paymentInfoInput);
+
+            if (!responsePayment)
+            {
+                return new OrderSuspendViewModel() { Error = "Ödeme Alınamadı!", IsSuccessful = false };
+            }
+
+            return new OrderSuspendViewModel() { IsSuccessful = true};
         }
     }
 }
