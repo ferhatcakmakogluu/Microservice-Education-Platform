@@ -41,7 +41,7 @@ namespace OnlineCourse.Web.Controllers
 
         public IActionResult SuccessfulCheckout(int orderId)
         {
-            ViewBag.ordderId = orderId;
+            ViewBag.orderId = orderId;
             return View();
         }
     }

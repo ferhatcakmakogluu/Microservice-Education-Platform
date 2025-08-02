@@ -62,7 +62,7 @@ namespace OnlineCourse.Web.Services
                 var orderItem = new OrderItemCreateInput
                 {
                     ProductId = x.CourseId,
-                    Price = x.Price,
+                    Price = x.GetCurrentPrice,
                     PictureUrl = "",
                     ProductName = x.CourseName
                 };
@@ -76,7 +76,12 @@ namespace OnlineCourse.Web.Services
                 return new OrderCreatedViewModel() { Error = "Sipariş Oluşturulamadı!", IsSuccessful = false };
             }
 
-            return await response.Content.ReadFromJsonAsync<OrderCreatedViewModel>();
+            var orderCreatedViewModel = await response.Content.ReadFromJsonAsync<Response<OrderCreatedViewModel>>();
+            orderCreatedViewModel.Data.IsSuccessful = true;
+
+            await _basketService.Delete();
+
+            return orderCreatedViewModel.Data;
         }
 
         public async Task<List<OrderViewModel>> GetOrder()
