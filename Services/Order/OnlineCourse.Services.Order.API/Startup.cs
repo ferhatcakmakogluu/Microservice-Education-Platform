@@ -38,6 +38,7 @@ namespace OnlineCourse.Services.Order.API
             services.AddMassTransit(x =>
             {
                 x.AddConsumer<CreateOrderMessageCommandConsumer>();
+                x.AddConsumer<CourseNameChangedEventConsumer>();
 
                 //default port: 5672
                 x.UsingRabbitMq((context, cfg) =>
@@ -51,6 +52,11 @@ namespace OnlineCourse.Services.Order.API
                     cfg.ReceiveEndpoint("create-order-service", e =>
                     {
                         e.ConfigureConsumer<CreateOrderMessageCommandConsumer>(context);
+                    });
+
+                    cfg.ReceiveEndpoint("course-name-changed-event-order-service", e =>
+                    {
+                        e.ConfigureConsumer<CourseNameChangedEventConsumer>(context);
                     });
                 });
             });
