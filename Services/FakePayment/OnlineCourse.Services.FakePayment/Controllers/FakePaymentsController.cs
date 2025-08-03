@@ -30,6 +30,7 @@ namespace OnlineCourse.Services.FakePayment.Controllers
             createOrderMessageCommand.District = paymentDto.Order.AddressDto.District;
             createOrderMessageCommand.Street = paymentDto.Order.AddressDto.Street;
             createOrderMessageCommand.Line = paymentDto.Order.AddressDto.Line;
+            createOrderMessageCommand.ZipCode = paymentDto.Order.AddressDto.ZipCode;
 
             paymentDto.Order.OrderItems.ForEach(x =>
             {
