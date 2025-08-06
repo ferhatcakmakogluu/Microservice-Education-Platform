@@ -12,7 +12,7 @@ services:
     restart: always
     ports:
       - "6379:6379"
-  discount:
+  discountdb:
     container_name: discountdb
     restart: always
     ports:
@@ -22,7 +22,7 @@ services:
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=Password12*
-      - POSTGRES_DB=admin
+      - POSTGRES_DB=discountdb
   identitydb:
     container_name: identitydb
     restart: always
@@ -55,21 +55,31 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - RabbitMQUrl=rabbitmq
-      - IdentityServerURL=http://identityserver.api:5001
+      - IdentityServerURL=http://identityserver.api:8080
       - DatabaseSettings:ConnectionString=mongodb://catalogdb:27017
     ports:
       - "5011:80"
     depends_on:
       - catalogdb
-  
   identityserver.api:
     container_name: identityserver.api
+    restart: on-failure
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - RabbitMQUrl=rabbitmq
-      - IdentityServerURL=http://identityserver.api:5001
-      - DatabaseSettings:ConnectionString=mongodb://catalogdb:27017
+      - "ConnectionStrings:DefaultConnection=Server=identitydb,1433;Database=IdentityDb; User Id=sa; Password=Password123!;TrustServerCertificate=True"
+      - ASPNETCORE_URLS=http://+:8080
     ports:
-      - "5011:80"
+      - "5001:8080"
     depends_on:
-      - catalogdb
+      - identitydb
+  
+  discount.api:
+    container_name: discount.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IdentityServerURL=http://identityserver.api
+      - "ConnectionStrings:PostgreSql=User ID=admin; Password=Password12*; Server=discountdb; Port=5432;Database=discountdb;Integrated Security=true;Pooling=true"
+    ports:
+      - "5014:80"
+    depends_on:
+      - discountdb
